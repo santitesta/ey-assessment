@@ -12,13 +12,13 @@ import rateLimit from 'express-rate-limit';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // const allowedOrigins =
-  //   process.env.NODE_ENV === 'development'
-  //     ? 'http://localhost:3000'
-  //     : 'https://contacts-api-ir1x.onrender.com';
+  const allowedOrigins =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://ey-assessment.onrender.com';
 
   app.enableCors({
-    origin: '*',
+    origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     credentials: true,
